@@ -1,15 +1,18 @@
 {
-  "name": "prochat-desktop-vite",
-  "productName": "prochat-desktop-vite",
+  "name": "prochat-desktop",
+  "productName": "prochat-desktop",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Prochat desktop app",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "web-start": "vite",
+    "web-build": "tsc -b && vite build",
+    "web-preview": "vite preview"
   },
   "keywords": [],
   "author": {
@@ -28,6 +31,8 @@
     "@electron-forge/plugin-vite": "^7.8.3",
     "@electron/fuses": "^1.8.0",
     "@types/electron-squirrel-startup": "^1.0.2",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "electron": "38.0.0",
@@ -37,6 +42,9 @@
     "vite": "^5.4.20"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "@heroicons/react": "^2.2.0",
+    "electron-squirrel-startup": "^1.0.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }

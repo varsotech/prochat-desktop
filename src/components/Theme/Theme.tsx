@@ -13,17 +13,25 @@ export interface Theme {
     text: {
       default: string;
       subtitle: string;
+      description: string;
     },
     card: {
       active: string;
     }
+    sidebarRight: {
+      background: string;
+      text: {
+        read: string;
+        unread: string;
+      }
+    }
   }
   font: {
-    xs: number;
-    s: number;
-    m: number;
-    l: number;
-    xl: number;
+    xs: string;
+    s: string;
+    m: string;
+    l: string;
+    xl: string;
   };
   spacing: {
     xxs: number;

@@ -4,6 +4,7 @@ import Home from "./screens/Home";
 import {ThemeProvider, useTheme} from "./components/Theme/Theme";
 import {lightTheme} from "./components/Theme/light";
 import {darkTheme} from "./components/Theme/dark";
+import {Route, Router} from "wouter";
 
 function App() {
     return (
@@ -20,9 +21,13 @@ function Root() {
     const [t] = useTheme();
 
     return (
-        <div style={{ display: "flex", height: "100vh", color: t.colors.text.default, fontSize: t.font.m }}>
+        <div style={{ display: "flex", height: "100vh", color: t.colors.text.default }}>
             <WindowTitleBar />
-            <Home />
+            <Router>
+                <Route path={"/"}>
+                    <Home />
+                </Route>
+            </Router>
         </div>
     )
 }

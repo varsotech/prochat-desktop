@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import Sidebar from "@components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import {Route, Switch, useLocation} from "wouter";
 import Community from "./Community";
 import Inbox from "./Inbox";
-import {useTheme} from "@components/Theme/Theme";
+import {useTheme} from "../../components/Theme/Theme";
 // import {useHomeserver} from "../components/Network/HomeserverProvider";
 
 function Home() {

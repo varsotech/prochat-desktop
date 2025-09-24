@@ -1,12 +1,12 @@
 import React from 'react';
-import {ThemeProvider, useTheme} from "@components/Theme/Theme";
-import {lightTheme} from "@components/Theme/light";
-import {darkTheme} from "@components/Theme/dark";
+import {ThemeProvider, useTheme} from "./components/Theme/Theme";
+import {lightTheme} from "./components/Theme/light";
+import {darkTheme} from "./components/Theme/dark";
 import {Route, Router, Switch} from "wouter";
-import {HomeserverProvider} from "@components/Network/HomeserverProvider";
+import {HomeserverProvider} from "./components/Network/HomeserverProvider";
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
-import WindowTitleBar from "@components/WindowTitleBar/WindowTitleBar";
+import WindowTitleBar from "./components/WindowTitleBar/WindowTitleBar";
 
 function Root() {
     return (

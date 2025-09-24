@@ -5,11 +5,12 @@ type ButtonProps = {
     label: string;
     onClick: () => void;
     style?: CSSProperties;
+    className?: string;
 }
 
-function Button({label, onClick, style}: ButtonProps): ReactElement {
+function Button({label, onClick, style, className}: ButtonProps): ReactElement {
     return (
-        <button style={style} onClick={(e) => onClick()}>{label}</button>
+        <button className={className} style={style} onClick={(e) => onClick()}>{label}</button>
     )
 }
 

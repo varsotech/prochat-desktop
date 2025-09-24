@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useTheme} from "@components/Theme/Theme";
+import {useTheme} from "../../components/Theme/Theme";
 import {useLocation} from "wouter";
 import LoginProviderStep from "./Steps/LoginProviderStep";
 import LoginStep from "./Steps/LoginStep";
+import LoginOrRegisterStep from "./Steps/LoginOrRegisterStep";
+import RegisterStep from "./Steps/RegisterStep";
 
 function Login() {
     const [t] = useTheme();
@@ -20,6 +22,8 @@ function Login() {
         }
     }, []);
 
+    var x = 1;
+
     const doLogin = (serverAddress: string) => {
         // Attempt anonymous login
 
@@ -27,19 +31,41 @@ function Login() {
         navigate("/");
     }
 
-
-
     return (
         <div style={{ display: "flex", flex: 1, justifyContent: "center", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: t.spacing.s }}>
-                {step === 1 && <LoginProviderStep
+                {step === 1 && <LoginOrRegisterStep
+                    goToLoginStep={() => setStep(10)}
+                    goToRegisterStep={() => setStep(20)}
+                />}
+
+                {/* Login flow */}
+                {step === 10 && <LoginProviderStep
                     serverAddress={serverAddress}
                     setServerAddress={setServerAddress}
-                    nextStep={() => setStep(step + 1)}
+                    nextStep={() => setStep(11)}
                     serverIconUrl={serverIconUrl}
                     setServerIconUrl={setServerIconUrl}
                 />}
-                {step === 2 && <LoginStep
+                {step === 11 && <LoginStep
+                    serverAddress={serverAddress}
+                    setServerAddress={setServerAddress}
+                    login={login}
+                    setLogin={setLogin}
+                    password={password}
+                    setPassword={setPassword}
+                    serverIconUrl={serverIconUrl}
+                />}
+
+                {/* Register flow */}
+                {step === 20 && <LoginProviderStep
+                    serverAddress={serverAddress}
+                    setServerAddress={setServerAddress}
+                    nextStep={() => setStep(21)}
+                    serverIconUrl={serverIconUrl}
+                    setServerIconUrl={setServerIconUrl}
+                />}
+                {step === 21 && <RegisterStep
                     serverAddress={serverAddress}
                     setServerAddress={setServerAddress}
                     login={login}

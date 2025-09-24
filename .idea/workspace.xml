@@ -5,41 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a15dc857-2cc8-4b32-82a5-4a50b1570f93" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.npmrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Root.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/axios.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/reactquery.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CommunityCard.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CommunityCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Inputs/Button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Inputs/TextInput.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Inputs/TextInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Network/HomeserverProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Home/Community.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Home/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Home/Inbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Login/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginProviderStep.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginStep.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginOrRegisterStep.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginOrRegisterStep.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginStep.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/RegisterStep.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Login/Steps/RegisterStep.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CommunityItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MenuItemCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Link.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListCategory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MenuItemList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SidebarRight.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SidebarRight.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Theme/Theme.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Theme/Theme.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Theme/dark.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Theme/dark.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Theme/light.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Theme/light.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WindowTitleBar/WindowTitleBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WindowTitleBar/WindowTitleBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CommunityCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CommunityCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Inputs/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/LoginProviderStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginProviderStep.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/LoginStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginStep.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vite.main.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.main.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vite.preload.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.preload.config.ts" afterDir="false" />
@@ -71,22 +51,24 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/lumi/Developer/prochat-desktop/src/components",
+    "last_opened_file_path": "/Users/lumi/Developer/prochat-desktop/src/screens/Login/Steps",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "/Users/lumi/Developer/prochat-desktop/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/screens/Login/Steps" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/Inputs" />
-      <recent name="$PROJECT_DIR$/src/screens/Login/Steps" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/screens/Login" />
     </key>
@@ -117,7 +99,9 @@
       <workItem from="1757803344718" duration="11705000" />
       <workItem from="1757896852461" duration="50499000" />
       <workItem from="1758145818139" duration="36339000" />
-      <workItem from="1758676248908" duration="5617000" />
+      <workItem from="1758676248908" duration="11123000" />
+      <workItem from="1758749453892" duration="233000" />
+      <workItem from="1758749703241" duration="1294000" />
     </task>
     <servers />
   </component>

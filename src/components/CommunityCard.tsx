@@ -1,8 +1,7 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {useTheme} from "./Theme/Theme";
 import Link from "./Link";
 import css from "./CommunityCard.module.css";
-import Button from "@components/Inputs/Button";
 
 export interface CommunityCardProps {
     id: string;
@@ -16,10 +15,9 @@ export interface CommunityCardProps {
 
 function CommunityCard({ title, subtitle, iconUrl, iconRender, active, onClick }: CommunityCardProps) {
     const [t] = useTheme();
-    const [expanded, setExpanded] = React.useState(false);
 
     return (
-        <Link className={css.card} style={{ paddingLeft: t.spacing.xs, paddingRight: t.spacing.xs, color: active ? t.colors.text.focused : t.colors.text.unfocused }} active={active} onClick={() => setExpanded(!expanded)}>
+        <Link className={css.card} style={{ paddingLeft: t.spacing.xs, paddingRight: t.spacing.xs, color: active ? t.colors.text.focused : t.colors.text.unfocused }} active={active} onClick={onClick}>
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center", paddingTop: t.spacing.xs, paddingBottom: t.spacing.xs }}>
                 <div style={{ width: 34, height: 34, backgroundColor: t.colors.photo.fallback, marginRight: t.spacing.s, borderRadius: 7, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     {iconRender ? iconRender : <img
@@ -36,7 +34,6 @@ function CommunityCard({ title, subtitle, iconUrl, iconRender, active, onClick }
                     </div>
                 </div>
             </div>
-            <Button style={{ display: expanded ? "block" : "none" }} label={"Login"} onClick={() => {}} />
         </Link>
     )
 }

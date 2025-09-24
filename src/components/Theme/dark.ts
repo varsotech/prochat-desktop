@@ -6,8 +6,14 @@ export const darkTheme: Theme = {
     colors: {
         text: {
             default: "#f5f5f7",
+            focused: "#f5f5f7",
+            unfocused: "hsl(0, 0%, 62.35%)",
             subtitle: "hsl(0, 0%, 62.35%)",
             description: "hsl(0, 0%, 50%)",
+        },
+        background: "rgba(0, 0, 0, 0.2)",
+        photo: {
+            fallback: "hsl(0,0%,57%)",
         },
         card: {
             active: 'rgba(255, 255, 255, 0.1)',

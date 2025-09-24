@@ -1,6 +1,6 @@
 import React from 'react';
 
-function    WindowTitleBar() {
+function WindowTitleBar() {
     return (
         <div
             style={{

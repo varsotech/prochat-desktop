@@ -1,8 +1,6 @@
 import React from 'react';
-import CommunityItem from "./CommunityItem";
 import {useTheme} from "./Theme/Theme";
-import ListCategory from "./ListCategory";
-import {ArrowLeftEndOnRectangleIcon, PlusCircleIcon} from '@heroicons/react/24/outline'
+import MenuItemList from "./MenuItemList";
 import Link from "./Link";
 
 function Sidebar() {
@@ -18,7 +16,7 @@ function Sidebar() {
             {/*    />*/}
             {/*</div>*/}
 
-            <ListCategory itemsContainerStyle={{ gap: t.spacing.xxs }} name={"Text Channels"} items={[
+            <MenuItemList itemsContainerStyle={{ gap: t.spacing.xxs }} name={"Text Channels"} items={[
                 <Link active style={{ padding: t.spacing.xs, paddingLeft: t.spacing.s, paddingRight: t.spacing.s, fontSize: t.font.m, color: t.colors.sidebarRight.text.unread}}>#general</Link>,
                 <Link style={{ padding: t.spacing.xs, paddingLeft: t.spacing.s, paddingRight: t.spacing.s, fontSize: t.font.m, color: t.colors.sidebarRight.text.read}}>#news</Link>,
             ]} />

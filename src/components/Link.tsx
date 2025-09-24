@@ -6,9 +6,10 @@ export type LinkProps = {
     active?: boolean;
     style?: CSSProperties;
     onClick?: () => void;
+    className?: string;
 }
 
-function Link({children, active, style, onClick}: LinkProps) {
+function Link({children, active, style, onClick, className}: LinkProps) {
     const [t] = useTheme();
 
     const activeStyle: CSSProperties = active ? {
@@ -16,7 +17,7 @@ function Link({children, active, style, onClick}: LinkProps) {
     } : {}
 
     return (
-        <a href={"#"} onClick={() => onClick?.()} style={{ textDecoration: "none", color: "inherit", borderRadius: 10, ...activeStyle, ...style }}>
+        <a href={"#"} className={className} onClick={() => onClick?.()} style={{ textDecoration: "none", color: "inherit", borderRadius: 10, ...activeStyle, ...style }}>
             {children}
         </a>
     )

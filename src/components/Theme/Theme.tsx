@@ -12,20 +12,26 @@ export interface Theme {
   colors: {
     text: {
       default: string;
+      focused: string;
+      unfocused: string
       subtitle: string;
       description: string;
-    },
+    };
+    background: string;
+    photo: {
+      fallback: string;
+    };
     card: {
       active: string;
-    }
+    };
     sidebarRight: {
       background: string;
       text: {
         read: string;
         unread: string;
-      }
-    }
-  }
+      };
+    };
+  };
   font: {
     xs: string;
     s: string;
@@ -39,7 +45,7 @@ export interface Theme {
     s: number;
     m: number;
     l: number;
-  }
+  };
 }
 
 export interface ThemeContextProps {

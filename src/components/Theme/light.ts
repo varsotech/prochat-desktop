@@ -4,8 +4,14 @@ export const lightTheme: Theme = {
     colors: {
         text: {
             default: "#000000",
+            focused: "#000000",
+            unfocused: "hsl(240, 2.04%, 19.22%)",
             subtitle: "hsl(240, 2.04%, 19.22%)",
             description: "#hsl(240, 2.04%, 19.22%)",
+        },
+        background: "rgba(0, 0, 0, 0.2)",
+        photo: {
+            fallback: "hsl(0,0%,57%)",
         },
         card: {
             active: 'rgba(0, 0, 0, 0.1)',
@@ -21,7 +27,7 @@ export const lightTheme: Theme = {
     font: {
         xs: '0.67em',
         s: '0.8em',
-        m: '0.85em',
+        m: '0.83em',
         l: '0.9em',
         xl: '1.2em',
     },

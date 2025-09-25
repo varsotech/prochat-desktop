@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {AtSymbolIcon} from '@heroicons/react/24/solid'
 import {useTheme} from "../../../components/Theme/Theme";
-import CommunityCard from "../../../omponents/CommunityCard";
+import CommunityCard from "../../../components/CommunityCard";
 
 type LoginProviderStepProps = {
     serverAddress: string;

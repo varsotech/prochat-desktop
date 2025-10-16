@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a15dc857-2cc8-4b32-82a5-4a50b1570f93" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/OAuth/OAuth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/OAuth/OAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/reactquery.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/LoginOrRegisterStep.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/LoginProviderStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Login/Steps/LoginProviderStep.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/LoginStep.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/LoginStep.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/RegisterStep.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Login/Steps/RegisterStep.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +52,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.main.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/lumi/Developer/prochat-desktop/src/screens/Login/Steps",
+    "last_opened_file_path": "/Users/lumi/Developer/prochat-desktop/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -49,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/screens/Login/Steps" />
       <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/screens" />
+      <recent name="$PROJECT_DIR$/src/screens/Login/Steps" />
       <recent name="$PROJECT_DIR$/src/components/Inputs" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/screens/Login" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -84,7 +106,8 @@
       <workItem from="1758145818139" duration="36339000" />
       <workItem from="1758676248908" duration="11123000" />
       <workItem from="1758749453892" duration="233000" />
-      <workItem from="1758749703241" duration="2616000" />
+      <workItem from="1758749703241" duration="24137000" />
+      <workItem from="1760460052775" duration="22966000" />
     </task>
     <servers />
   </component>

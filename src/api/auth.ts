@@ -1,11 +1,9 @@
 import {
-  EasyRegisterRequest,
-  EasyRegisterResponse,
   LoginRequest,
   LoginResponse,
   RegisterRequest,
   RegisterResponse,
-} from "@luminancetech/varso/src/auth/authrequests";
+} from "@varsotech/prochat/prochat/v1/auth_pb";
 import { AxiosResponse } from "axios";
 import axios from "./axios";
 import { useMutation } from "./reactquery";

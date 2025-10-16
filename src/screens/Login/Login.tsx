@@ -1,82 +1,46 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useTheme} from "../../components/Theme/Theme";
 import {useLocation} from "wouter";
 import LoginProviderStep from "./Steps/LoginProviderStep";
-import LoginStep from "./Steps/LoginStep";
-import LoginOrRegisterStep from "./Steps/LoginOrRegisterStep";
-import RegisterStep from "./Steps/RegisterStep";
+import {useOAuth} from '../../components/OAuth/OAuth';
 
 function Login() {
     const [t] = useTheme();
     const [, navigate] = useLocation();
-    const [step, setStep] = useState(1);
-    const [serverAddress, setServerAddress] = useState<string>("");
-    const [login, setLogin] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [serverIconUrl, setServerIconUrl] = useState<string>("");
+    const {setState: setOAuthState, setHomeserverAddress} = useOAuth();
 
     useEffect(() => {
+        // On load, make sure we are not already logged in
         const serverAddress = localStorage.getItem("ServerAddress");
         if (serverAddress != null) {
             navigate("/");
+            return;
         }
     }, []);
 
-    var x = 1;
+    function openInApp(serverAddress: string) {
+        setHomeserverAddress(serverAddress);
 
-    const doLogin = (serverAddress: string) => {
-        // Attempt anonymous login
+        // Create and store OAuth state parameter
+        const state = new Uint8Array(16);
+        crypto.getRandomValues(state);
+        const stateHex = Array.from(state, b => b.toString(16).padStart(2, '0')).join('');
+        setOAuthState(stateHex);
 
-        localStorage.setItem("ServerAddress", serverAddress);
-        navigate("/");
+        // Open OAuth URL in default browser
+        const url = new URL("/api/v1/oauth/authorize?response_type=code&client_id=https%3A%2F%2Fwww.varso.org%2F.well-known%2Fclient-metadata.json&state=" + stateHex, serverAddress);
+        window.electronAPI.openURL(url.toString());
     }
 
     return (
         <div style={{ display: "flex", flex: 1, justifyContent: "center", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: t.spacing.s }}>
-                {step === 1 && <LoginOrRegisterStep
-                    goToLoginStep={() => setStep(10)}
-                    goToRegisterStep={() => setStep(20)}
-                />}
-
-                {/* Login flow */}
-                {step === 10 && <LoginProviderStep
-                    serverAddress={serverAddress}
-                    setServerAddress={setServerAddress}
-                    nextStep={() => setStep(11)}
-                    serverIconUrl={serverIconUrl}
-                    setServerIconUrl={setServerIconUrl}
-                />}
-                {step === 11 && <LoginStep
-                    serverAddress={serverAddress}
-                    setServerAddress={setServerAddress}
-                    login={login}
-                    setLogin={setLogin}
-                    password={password}
-                    setPassword={setPassword}
-                    serverIconUrl={serverIconUrl}
-                />}
-
-                {/* Register flow */}
-                {step === 20 && <LoginProviderStep
-                    serverAddress={serverAddress}
-                    setServerAddress={setServerAddress}
-                    nextStep={() => setStep(21)}
-                    serverIconUrl={serverIconUrl}
-                    setServerIconUrl={setServerIconUrl}
-                />}
-                {step === 21 && <RegisterStep
-                    serverAddress={serverAddress}
-                    setServerAddress={setServerAddress}
-                    login={login}
-                    setLogin={setLogin}
-                    password={password}
-                    setPassword={setPassword}
-                    serverIconUrl={serverIconUrl}
-                />}
+                <LoginProviderStep
+                    onSelection={openInApp}
+                />
             </div>
         </div>
-    )
+    );
 }
 
 export default Login;

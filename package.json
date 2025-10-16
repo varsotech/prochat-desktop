@@ -46,7 +46,8 @@
   "dependencies": {
     "@bufbuild/protobuf": "^2.8.0",
     "@heroicons/react": "^2.2.0",
-    "@varsotech/prochat": "^0.0.7",
+    "@varsotech/prochat": "file:../prochat-server/client",
+    "axios": "^1.12.2",
     "electron-squirrel-startup": "^1.0.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

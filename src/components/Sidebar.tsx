@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MenuItemCard from "./MenuItemCard";
 import {useTheme} from "./Theme/Theme";
 import MenuItemList from "./MenuItemList";
-import {PlusCircleIcon} from '@heroicons/react/24/solid'
+import {PlusCircleIcon} from '@heroicons/react/24/solid';
 // import SidebarRight from "./SidebarRight";
 import {CommunityGroup} from "@varsotech/prochat/prochat/v1/base_pb";
 import {useLocation} from "wouter";
@@ -65,14 +65,15 @@ function Sidebar() {
                 {/*</div>*/}
 
                 <MenuItemList items={[
-                    <MenuItemCard id={"add"} title={"Add community"} iconRender={<PlusCircleIcon width={20} height={20} color={t.colors.text.focused} />} />,
+                    <MenuItemCard key={1} id={"add"} title={"Add community"} iconRender={<PlusCircleIcon width={20} height={20} color={t.colors.text.focused} />} />,
                     // <MenuItemCard id={"add"} title={"Add folder"} iconRender={<FolderPlusIcon width={20} height={20} color={t.colors.text.focused} />} />
                 ]} />
 
                 {communities.map((communityGroup, index) => {
                     return (
-                        <MenuItemList name={communityGroup.name} items={[communityGroup.communities.map((community) => {
+                        <MenuItemList key={index} name={communityGroup.name} items={[communityGroup.communities.map((community: any, communityIndex: number) => {
                             return <MenuItemCard
+                                key={communityIndex}
                                 id={community.id}
                                 title={community.name}
                                 subtitle={community.online+" online"}
@@ -88,7 +89,7 @@ function Sidebar() {
             </div>
             {/*<SidebarRight />*/}
         </div>
-    )
+    );
 }
 
 export default Sidebar;

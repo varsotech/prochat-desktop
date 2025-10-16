@@ -25,7 +25,7 @@ function Home() {
         // If not logged in
         const serverAddress = localStorage.getItem("ServerAddress");
         if (serverAddress == null) {
-            navigate("/login")
+            navigate("/login");
         }
     }, []);
 

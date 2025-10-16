@@ -1,2 +1,6 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+import { contextBridge, ipcRenderer } from 'electron';
+
+contextBridge.exposeInMainWorld('electronAPI', {
+    openURL: (url: string) => ipcRenderer.send('open-url', url),
+    onDeepLink: (callback: (event: IpcRendererEvent, message: string) => void) => ipcRenderer.on('deep-link', callback)
+});

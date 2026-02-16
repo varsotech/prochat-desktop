@@ -10,6 +10,8 @@ export interface OAuthContextProps {
   setState: (state: string) => void;
   homeserverAddress: string;
   setHomeserverAddress: (address: string) => void;
+  token: string;
+  setToken: (token: string) => void;
 }
 
 const OAuthContext = createContext<OAuthContextProps | undefined>(undefined);
@@ -23,6 +25,7 @@ export const OAuthProvider: React.FC<OAuthProviderProps> = ({
 }) => {
   const [state, setState] = useState("");
   const [homeserverAddress, setHomeserverAddress] = useState("");
+  const [token, setToken] = useState("");
 
   return (
     <OAuthContext.Provider
@@ -31,6 +34,8 @@ export const OAuthProvider: React.FC<OAuthProviderProps> = ({
         setState,
         homeserverAddress,
         setHomeserverAddress,
+        token,
+        setToken
       }}
     >
       {children}

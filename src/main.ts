@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
+import {ElectronEnv} from "./components/ElectronEnv/ElectronEnv";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -76,6 +77,13 @@ ipcMain.on('open-url', (event, url) => {
     console.log("tried url", url);
     console.error(error);
   });
+});
+
+// Handles URLs pointing to prochat:// (MacOS)
+ipcMain.on('env-request', (event) => {
+  console.log("env requested");
+
+  mainWindow?.webContents.send('env-reply', JSON.stringify({ isDev: !app.isPackaged } as ElectronEnv));
 });
 
 

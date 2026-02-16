@@ -29,7 +29,15 @@ function Login() {
 
         // Open OAuth URL in default browser
         const url = new URL("/api/v1/oauth/authorize?response_type=code&client_id=https%3A%2F%2Fwww.varso.org%2F.well-known%2Fclient-metadata.json&state=" + stateHex, serverAddress);
-        window.electronAPI.openURL(url.toString());
+
+        if (window.electronAPI != null) {
+            window.electronAPI.openURL(url.toString());
+        } else {
+            window.open(url.toString(), '_blank').focus();
+        }
+
+        // Redirect to Login Waiting
+        navigate("/loginWaiting");
     }
 
     return (

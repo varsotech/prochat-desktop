@@ -10,14 +10,15 @@ type OAuthProps = {
 function OAuth({ params }: OAuthProps): ReactElement {
     const [t] = useTheme();
     const [, navigate] = useLocation();
-    const {state: oauthState, homeserverAddress} = useOAuth();
+    const {state: oauthState, homeserverAddress, setToken} = useOAuth();
     const didSendTokenReq = useRef(false);
 
     useEffect(() => {
+        console.log("OAuth component loaded");
+
         if (didSendTokenReq.current) { return; }
         didSendTokenReq.current = true;
 
-        console.log("using effect");
         const queryParams = new URLSearchParams(params);
 
         // Validate state

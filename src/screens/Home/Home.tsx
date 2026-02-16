@@ -4,11 +4,13 @@ import {Route, Switch, useLocation} from "wouter";
 import Community from "./Community";
 import Inbox from "./Inbox";
 import {useTheme} from "../../components/Theme/Theme";
+import {useOAuth} from "../../components/OAuth/OAuth";
 // import {useHomeserver} from "../components/Network/HomeserverProvider";
 
 function Home() {
     const [t] = useTheme();
     const [, navigate] = useLocation();
+    const {isLoggedIn} = useOAuth();
     // const { subscribe } = useHomeserver();
     // const [highlighted, setHighlighted] = useState(false);
     //
@@ -22,12 +24,10 @@ function Home() {
     // }, [subscribe]);
 
     useEffect(() => {
-        // If not logged in
-        const serverAddress = localStorage.getItem("ServerAddress");
-        if (serverAddress == null) {
+        if (!isLoggedIn) {
             navigate("/login");
         }
-    }, []);
+    }, [isLoggedIn]);
 
     return (
         <div style={{ display: "flex", flex: 1 }}>

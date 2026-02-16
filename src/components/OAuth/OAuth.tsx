@@ -4,14 +4,18 @@ import React, {
   useState,
   ReactNode,
 } from "react";
+import {useLocation} from "wouter";
+import {TokenResponse} from "../../../../prochat-server/client/prochat/v1/oauth_pb";
 
 export interface OAuthContextProps {
-  state: string;
-  setState: (state: string) => void;
-  homeserverAddress: string;
-  setHomeserverAddress: (address: string) => void;
-  token: string;
-  setToken: (token: string) => void;
+    state: string;
+    setState: (state: string) => void;
+    homeserverAddress: string;
+    setHomeserverAddress: (address: string) => void;
+    tokenResponse: TokenResponse;
+    setTokenResponse: (resp: TokenResponse) => void;
+    handleOauthLink: (url: string) => void;
+    isLoggedIn: boolean;
 }
 
 const OAuthContext = createContext<OAuthContextProps | undefined>(undefined);
@@ -23,24 +27,67 @@ export interface OAuthProviderProps {
 export const OAuthProvider: React.FC<OAuthProviderProps> = ({
   children,
 }) => {
-  const [state, setState] = useState("");
-  const [homeserverAddress, setHomeserverAddress] = useState("");
-  const [token, setToken] = useState("");
+    const [state, setState] = useState("");
+    const [homeserverAddress, setHomeserverAddressState] = useState(localStorage.getItem("ServerAddress"));
 
-  return (
-    <OAuthContext.Provider
-      value={{
-        state,
-        setState,
-        homeserverAddress,
-        setHomeserverAddress,
-        token,
-        setToken
-      }}
-    >
-      {children}
-    </OAuthContext.Provider>
-  );
+    const storeTokenResponse = localStorage.getItem("TokenResponse");
+    const [tokenResponse, setTokenResponseState] = useState<TokenResponse | undefined>(storeTokenResponse == null ? undefined : JSON.stringify(storeTokenResponse));
+
+    const [, navigate] = useLocation();
+
+    function handleOauthLink(message: string) {
+        const splitMessage = message.split("://", 2);
+        if (splitMessage.length != 2) {
+            console.error("unexpected deep link", message);
+            return;
+        }
+
+        let key = splitMessage[1];
+        let params = "";
+
+        const splitKey = key.split("?", 2);
+        if (splitKey.length > 1) {
+            key = splitKey[0];
+            params = splitKey[1];
+        }
+
+        switch (key) {
+            case "oauth": {
+                console.log("navigating to oauth");
+                navigate(`/oauth/${encodeURIComponent(params)}`);
+                break;
+            }
+        }
+    }
+
+    function setHomeserverAddress(address: string) {
+        localStorage.setItem("ServerAddress", address);
+        setHomeserverAddressState(address);
+    }
+
+    function setTokenResponse(tokenResponse: TokenResponse) {
+        localStorage.setItem("TokenResponse", tokenResponse);
+        setTokenResponseState(tokenResponse);
+    }
+
+    const isLoggedIn = tokenResponse != null;
+
+    return (
+        <OAuthContext.Provider
+            value={{
+                state,
+                setState,
+                homeserverAddress,
+                setHomeserverAddress,
+                tokenResponse,
+                setTokenResponse,
+                handleOauthLink,
+                isLoggedIn,
+            }}
+        >
+            {children}
+        </OAuthContext.Provider>
+    );
 };
 
 export const useOAuth = (): OAuthContextProps => {

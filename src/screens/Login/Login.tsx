@@ -7,16 +7,14 @@ import {useOAuth} from '../../components/OAuth/OAuth';
 function Login() {
     const [t] = useTheme();
     const [, navigate] = useLocation();
-    const {setState: setOAuthState, setHomeserverAddress} = useOAuth();
+    const {setState: setOAuthState, setHomeserverAddress, isLoggedIn} = useOAuth();
 
     useEffect(() => {
-        // On load, make sure we are not already logged in
-        const serverAddress = localStorage.getItem("ServerAddress");
-        if (serverAddress != null) {
+        if (isLoggedIn) {
             navigate("/");
             return;
         }
-    }, []);
+    }, [isLoggedIn]);
 
     function openInApp(serverAddress: string) {
         setHomeserverAddress(serverAddress);
@@ -28,7 +26,7 @@ function Login() {
         setOAuthState(stateHex);
 
         // Open OAuth URL in default browser
-        const url = new URL("/api/v1/oauth/authorize?response_type=code&client_id=https%3A%2F%2Fwww.varso.org%2F.well-known%2Fclient-metadata.json&state=" + stateHex, serverAddress);
+        const url = new URL("/api/v1/oauth/authorize?response_type=code&client_id=https%3A%2F%2Fwww.varso.org%2F.well-known%2Fclient-metadata.json&state=" + encodeURIComponent(stateHex), serverAddress);
 
         if (window.electronAPI != null) {
             window.electronAPI.openURL(url.toString());

@@ -51,7 +51,7 @@ export function HomeserverProvider({ children }: { children: ReactNode }){
                 console.error("[WS] Failed to parse message", e);
             }
         };
-    }
+    };
 
     useEffect(() => {
         return () => {

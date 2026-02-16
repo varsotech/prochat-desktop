@@ -8,7 +8,7 @@ import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
 import OAuth from "./screens/OAuth/OAuth";
 import WindowTitleBar from "./components/WindowTitleBar/WindowTitleBar";
-import {OAuthProvider} from "./components/OAuth/OAuth";
+import {OAuthProvider, useOAuth} from "./components/OAuth/OAuth";
 import LoginWaiting from "./screens/LoginWaiting/LoginWaiting";
 import {ElectronEnvProvider} from "./components/ElectronEnv/ElectronEnv";
 
@@ -36,34 +36,8 @@ function Root() {
 
 function App() {
     const [t] = useTheme();
-    const [, navigate] = useLocation();
     const didSubscribeToDeepLinks = useRef(false);
-
-    function handleOauth(message: string) {
-        console.log("Got deep link");
-        const splitMessage = message.split("://", 2);
-        if (splitMessage.length != 2) {
-            console.error("unexpected deep link", message);
-            return;
-        }
-
-        let key = splitMessage[1];
-        let params = "";
-
-        const splitKey = key.split("?", 2);
-        if (splitKey.length > 1) {
-            key = splitKey[0];
-            params = splitKey[1];
-        }
-
-        console.log("deep link to " + key + " with params " + params.toString());
-        switch (key) {
-            case "oauth": {
-                navigate(`/oauth/${params}`);
-                break;
-            }
-        }
-    }
+    const {handleOauthLink} = useOAuth();
 
     useEffect(() => {
         if (didSubscribeToDeepLinks.current) { return; }
@@ -72,7 +46,7 @@ function App() {
         // Handle deep links (for OAuth)
         if (window.electronAPI != null) {
             window.electronAPI.onDeepLink((event: Electron.IpcRendererEvent, message: string) => {
-                handleOauth(message);
+                handleOauthLink(message);
             });
         }
     }, []);

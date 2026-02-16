@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import css from './TextInput.module.css'
+import css from './TextInput.module.css';
 
 type TextInputProps = {
     label: string;

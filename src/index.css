@@ -1,6 +1,8 @@
 :root {
   --color-primary: #2563eb;
   --color-bg: #ffffff;
+  --color-input-bg: #c1c1c1;
+  --color-input-placeholder: #676767;
   --color-text: #000000;
   --color-text-secondary: #000000;
 }
@@ -8,6 +10,8 @@
 [data-theme="dark"] {
   --color-primary: #3b82f6;
   --color-bg: #18181b;
+  --color-input-bg: #4a4a53;
+  --color-input-placeholder: #989898;
   --color-text: #ffffff;
   --color-text-secondary: #c2c2c2;
 }
@@ -20,4 +24,5 @@ body {
   width: 100%;
   height: 100%;
   color: var(--color-text);
+  background-color: var(--color-bg);
 }

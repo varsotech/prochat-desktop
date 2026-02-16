@@ -2,10 +2,14 @@
     border: none;
     outline: none;
 
-    background-color: var(--color-bg);
+    background-color: var(--color-input-bg);
     color: var(--color-text-secondary);
     padding: 8px 12px;
     border-radius: 8px;
+}
+
+.input::placeholder {
+    color: var(--color-input-placeholder);
 }
 
 .input:focus {

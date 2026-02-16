@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {ThemeProvider, useTheme} from "./components/Theme/Theme";
 import {lightTheme} from "./components/Theme/light";
 import {darkTheme} from "./components/Theme/dark";
@@ -8,61 +8,47 @@ import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
 import OAuth from "./screens/OAuth/OAuth";
 import WindowTitleBar from "./components/WindowTitleBar/WindowTitleBar";
-import {OAuthProvider} from "./components/OAuth/OAuth";
+import {OAuthProvider, useOAuth} from "./components/OAuth/OAuth";
+import LoginWaiting from "./screens/LoginWaiting/LoginWaiting";
+import {ElectronEnvProvider} from "./components/ElectronEnv/ElectronEnv";
 
 function Root() {
     return (
         <div style={{ display: "flex", height: "100vh" }}>
-            <HomeserverProvider>
-                <OAuthProvider>
-                    <ThemeProvider lightTheme={"light"} darkTheme={"dark"} themes={{
-                        "light": lightTheme,
-                        "dark": darkTheme,
-                    }}>
-                        <WindowTitleBar />
-                        <Router>
-                            <App />
-                        </Router>
-                    </ThemeProvider>
-                </OAuthProvider>
-            </HomeserverProvider>
+            <ElectronEnvProvider>
+                <HomeserverProvider>
+                    <OAuthProvider>
+                        <ThemeProvider lightTheme={"light"} darkTheme={"dark"} themes={{
+                            "light": lightTheme,
+                            "dark": darkTheme,
+                        }}>
+                            <WindowTitleBar />
+                            <Router>
+                                <App />
+                            </Router>
+                        </ThemeProvider>
+                    </OAuthProvider>
+                </HomeserverProvider>
+            </ElectronEnvProvider>
         </div>
     );
 }
 
 function App() {
     const [t] = useTheme();
-    const [, navigate] = useLocation();
     const didSubscribeToDeepLinks = useRef(false);
+    const {handleOauthLink} = useOAuth();
 
     useEffect(() => {
         if (didSubscribeToDeepLinks.current) { return; }
         didSubscribeToDeepLinks.current = true;
 
-        window.electronAPI.onDeepLink((event: IpcRendererEvent, message: string) => {
-            console.log("Got deep link");
-            const splitMessage = message.split("://", 2);
-            if (splitMessage.length != 2) {
-                console.error("unexpected deep link", message);
-                return;
-            }
-
-            let key = splitMessage[1];
-            let params = "";
-
-            const splitKey = key.split("?", 2);
-            if (splitKey.length > 1) {
-                key = splitKey[0];
-                params = splitKey[1];
-            }
-
-            switch (key) {
-                case "oauth": {
-                    navigate(`/oauth/${params}`);
-                    break;
-                }
-            }
-        });
+        // Handle deep links (for OAuth)
+        if (window.electronAPI != null) {
+            window.electronAPI.onDeepLink((event: Electron.IpcRendererEvent, message: string) => {
+                handleOauthLink(message);
+            });
+        }
     }, []);
 
     return (
@@ -70,6 +56,9 @@ function App() {
             <Switch>
                 <Route path={"/login"}>
                     <Login />
+                </Route>
+                <Route path={"/loginWaiting"}>
+                    <LoginWaiting />
                 </Route>
                 <Route path={`/oauth/:urlParams`}>
                     {(params: {urlParams: string}) => {

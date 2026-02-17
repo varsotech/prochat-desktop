@@ -6,47 +6,52 @@ import {PlusCircleIcon} from '@heroicons/react/24/solid';
 // import SidebarRight from "./SidebarRight";
 import {CommunityGroup} from "@varsotech/prochat/prochat/v1/base_pb";
 import {useLocation} from "wouter";
+import {GetUserCommunitiesResponse_Community} from "../../../prochat-server/client/homeserver/v1/homeserver_pb";
 
-function Sidebar() {
+export type SidebarProps = {
+    communities: GetUserCommunitiesResponse_Community[];
+}
+
+function Sidebar({communities}: SidebarProps) {
     const [t] = useTheme();
     const [selectedCommunityId, setSelectedCommunityId] = useState("");
     const [location, navigate] = useLocation();
 
-    const communities: CommunityGroup[] = [
-        {
-            id: "favorites",
-            name: "Favorites",
-            communities: [
-                {
-                    "$typeName": "",
-                    id: "ableton",
-                    name: "Ableton",
-                    iconUrl: "https://cdn.discordapp.com/icons/1019528834317553664/c8d0e57fa5b1c46ad71c4d9ecb22e0b4.png?size=160&quality=lossless",
-                    online: BigInt(403),
-                },
-                {
-                    "$typeName": "",
-                    id: "straftatcomp",
-                    name: "Straftat Competitive",
-                    iconUrl: "https://cdn.discordapp.com/icons/1306435530241609859/d7a2590207d17367ec897f1aa859b06b.png?size=160&quality=lossless",
-                    online: BigInt(14),
-                },
-            ]
-        },
-        {
-            id: "politics",
-            name: "Politics",
-            communities: [
-                {
-                    "$typeName": "",
-                    id: "hasanabi",
-                    name: "Hasanabi",
-                    iconUrl: "https://cdn.discordapp.com/icons/487060767342854145/a_2053eb4739bc549a95e8d00c77eaeaf5.png?size=160&quality=lossless",
-                    online: BigInt(2440),
-                },
-            ]
-        }
-    ];
+    // const communities: CommunityGroup[] = [
+    //     {
+    //         id: "favorites",
+    //         name: "Favorites",
+    //         communities: [
+    //             {
+    //                 "$typeName": "",
+    //                 id: "ableton",
+    //                 name: "Ableton",
+    //                 iconUrl: "https://cdn.discordapp.com/icons/1019528834317553664/c8d0e57fa5b1c46ad71c4d9ecb22e0b4.png?size=160&quality=lossless",
+    //                 online: BigInt(403),
+    //             },
+    //             {
+    //                 "$typeName": "",
+    //                 id: "straftatcomp",
+    //                 name: "Straftat Competitive",
+    //                 iconUrl: "https://cdn.discordapp.com/icons/1306435530241609859/d7a2590207d17367ec897f1aa859b06b.png?size=160&quality=lossless",
+    //                 online: BigInt(14),
+    //             },
+    //         ]
+    //     },
+    //     {
+    //         id: "politics",
+    //         name: "Politics",
+    //         communities: [
+    //             {
+    //                 "$typeName": "",
+    //                 id: "hasanabi",
+    //                 name: "Hasanabi",
+    //                 iconUrl: "https://cdn.discordapp.com/icons/487060767342854145/a_2053eb4739bc549a95e8d00c77eaeaf5.png?size=160&quality=lossless",
+    //                 online: BigInt(2440),
+    //             },
+    //         ]
+    //     }
+    // ];
 
     // On community selection changed
     useEffect(() => {
@@ -69,21 +74,17 @@ function Sidebar() {
                     // <MenuItemCard id={"add"} title={"Add folder"} iconRender={<FolderPlusIcon width={20} height={20} color={t.colors.text.focused} />} />
                 ]} />
 
-                {communities.map((communityGroup, index) => {
-                    return (
-                        <MenuItemList key={index} name={communityGroup.name} items={[communityGroup.communities.map((community: any, communityIndex: number) => {
-                            return <MenuItemCard
-                                key={communityIndex}
-                                id={community.id}
-                                title={community.name}
-                                subtitle={community.online+" online"}
-                                iconUrl={community.iconUrl}
-                                active={community.id === selectedCommunityId}
-                                onClick={() => setSelectedCommunityId(community.id)}
-                            />;
-                        })]} />
-                    );
-                })}
+                <MenuItemList name={"Communities"} items={[communities?.map((community: GetUserCommunitiesResponse_Community, communityIndex: number) => {
+                    return <MenuItemCard
+                        key={communityIndex}
+                        id={community.id}
+                        title={community.name}
+                        subtitle={"17 online"}
+                        // iconUrl={community.iconUrl}
+                        active={community.id === selectedCommunityId}
+                        onClick={() => setSelectedCommunityId(community.id)}
+                    />;
+                })]} />
 
 
             </div>

@@ -25,6 +25,7 @@ const createWindow = () => {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      // zoomFactor: 1,
     },
     titleBarStyle: 'hidden',
     titleBarOverlay: true,
@@ -32,7 +33,7 @@ const createWindow = () => {
     vibrancy: "sidebar",
   });
 
-  // and load the index.html of the app.
+  // Load the index.html of the app
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {

@@ -25,6 +25,7 @@ const createWindow = () => {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      // zoomFactor: 1,
     },
     titleBarStyle: 'hidden',
     titleBarOverlay: true,

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Sidebar from "../../components/Sidebar";
 import {Route, Switch, useLocation} from "wouter";
 import Community from "./Community";
@@ -10,7 +10,9 @@ import {create, fromBinary, toBinary} from "@bufbuild/protobuf";
 import {
     GetUserCommunitiesResponseSchema,
     GetUserCommunitiesRequestSchema,
-    Message_Type, JoinCommunityServerRequestSchema, JoinCommunityServerResponseSchema,
+    Message_Type,
+    JoinCommunityServerRequestSchema,
+    GetUserCommunitiesResponse_Community,
 } from "../../../../prochat-server/client/homeserver/v1/homeserver_pb";
 
 function Home() {
@@ -18,14 +20,15 @@ function Home() {
     const [, navigate] = useLocation();
     const {isLoggedIn, homeserverAddress} = useOAuth();
     const {request, isOpen} = useHomeserver();
-    // const {} = useCommunityServerHttp();
+    const [communities, setCommunities] = useState<GetUserCommunitiesResponse_Community[]>();
 
-    // Join homeserver community
+    // Join homeserver community server
     useEffect(() => {
         if (!isOpen) return;
 
         const payload = toBinary(JoinCommunityServerRequestSchema, create(JoinCommunityServerRequestSchema, {
             host: homeserverAddress,
+            joinDefaultCommunity: true,
         }));
 
         return request(Message_Type.JOIN_COMMUNITY_SERVER, payload, (response) => {
@@ -33,8 +36,6 @@ function Home() {
                 console.error(response.error.message);
                 return;
             }
-            const resp = fromBinary(JoinCommunityServerResponseSchema, response.payload);
-            console.log("join community server response", resp);
         });
     }, [isOpen]);
 
@@ -50,6 +51,7 @@ function Home() {
                 return;
             }
             const resp = fromBinary(GetUserCommunitiesResponseSchema, response.payload);
+            setCommunities(resp.communities);
             console.log("get user communities RESPONSE", resp);
         });
     }, [isOpen]);
@@ -62,7 +64,7 @@ function Home() {
 
     return (
         <div style={{ display: "flex", flex: 1 }}>
-            <Sidebar />
+            <Sidebar communities={communities} />
             <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
                 <div style={{ display: "flex", height: t.spacing.l, width: "100%", alignItems: "center", justifyContent: "center" }}>
                     {/*<div style={{ fontSize: t.font.s, color: t.colors.text.subtitle }}>Prochat</div>*/}

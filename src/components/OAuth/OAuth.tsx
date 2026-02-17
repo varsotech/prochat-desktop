@@ -31,7 +31,7 @@ export const OAuthProvider: React.FC<OAuthProviderProps> = ({
     const [homeserverAddress, setHomeserverAddressState] = useState(localStorage.getItem("ServerAddress"));
 
     const storeTokenResponse = localStorage.getItem("TokenResponse");
-    const [tokenResponse, setTokenResponseState] = useState<TokenResponse | undefined>(storeTokenResponse == null ? undefined : JSON.stringify(storeTokenResponse));
+    const [tokenResponse, setTokenResponseState] = useState<TokenResponse | undefined>(storeTokenResponse == null ? undefined : JSON.parse(storeTokenResponse));
 
     const [, navigate] = useLocation();
 
@@ -66,7 +66,9 @@ export const OAuthProvider: React.FC<OAuthProviderProps> = ({
     }
 
     function setTokenResponse(tokenResponse: TokenResponse) {
-        localStorage.setItem("TokenResponse", tokenResponse);
+        console.log("setting token response in local storage", tokenResponse);
+        localStorage.setItem("TokenResponse", JSON.stringify(tokenResponse));
+        console.log("done setting token response in local storage");
         setTokenResponseState(tokenResponse);
     }
 

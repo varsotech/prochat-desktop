@@ -40,11 +40,16 @@ function OAuth({ params }: OAuthProps): ReactElement {
             return;
         }
 
-            const url = new URL(`/api/v1/oauth/token?grant_type=authorization_code&code=${code}&client_id=https%3A%2F%2Fwww.varso.org%2F.well-known%2Fclient-metadata.json`, homeserverAddress);
+        const url = new URL(`/api/v1/oauth/token?grant_type=authorization_code&code=${encodeURIComponent(code)}&client_id=https%3A%2F%2Fwww.varso.org%2F.well-known%2Fclient-metadata.json`, homeserverAddress);
         console.log("requesting token from url", url.toString());
-        fetch(url.toString())
+        fetch(url.toString(), {
+            headers: {
+                "ngrok-skip-browser-warning": "true",
+            },
+        })
             .then((response) => response.json())
             .then((data: TokenResponse) => {
+                console.log("token response", data);
                 setTokenResponse(data);
                 navigate("/");
             })

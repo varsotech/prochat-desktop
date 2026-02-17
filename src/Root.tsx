@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {ThemeProvider, useTheme} from "./components/Theme/Theme";
 import {lightTheme} from "./components/Theme/light";
 import {darkTheme} from "./components/Theme/dark";
-import {Route, Router, Switch, useLocation} from "wouter";
+import {Route, Router, Switch} from "wouter";
 import {HomeserverProvider} from "./components/Network/HomeserverProvider";
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
@@ -11,24 +11,27 @@ import WindowTitleBar from "./components/WindowTitleBar/WindowTitleBar";
 import {OAuthProvider, useOAuth} from "./components/OAuth/OAuth";
 import LoginWaiting from "./screens/LoginWaiting/LoginWaiting";
 import {ElectronEnvProvider} from "./components/ElectronEnv/ElectronEnv";
+import {CommunityServerHttpProvider} from "./components/Network/CommunityServerHttpProvider";
 
 function Root() {
     return (
         <div style={{ display: "flex", height: "100vh" }}>
             <ElectronEnvProvider>
-                <HomeserverProvider>
-                    <OAuthProvider>
-                        <ThemeProvider lightTheme={"light"} darkTheme={"dark"} themes={{
-                            "light": lightTheme,
-                            "dark": darkTheme,
-                        }}>
-                            <WindowTitleBar />
-                            <Router>
-                                <App />
-                            </Router>
-                        </ThemeProvider>
-                    </OAuthProvider>
-                </HomeserverProvider>
+                <OAuthProvider>
+                    <HomeserverProvider>
+                        <CommunityServerHttpProvider>
+                            <ThemeProvider lightTheme={"light"} darkTheme={"dark"} themes={{
+                                "light": lightTheme,
+                                "dark": darkTheme,
+                            }}>
+                                <WindowTitleBar />
+                                <Router>
+                                    <App />
+                                </Router>
+                            </ThemeProvider>
+                        </CommunityServerHttpProvider>
+                    </HomeserverProvider>
+                </OAuthProvider>
             </ElectronEnvProvider>
         </div>
     );
